@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: purchase-orders
+  datasource:
+    url: jdbc:postgresql://localhost:5432/eucomida-db
+    username: eucomida
+    password: eucomida
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+server:
+  port: 8080
