@@ -24,7 +24,6 @@ public class OrderService implements OrderServiceInterface {
     @Override
     public ResponseOrderDTO submitOrder(SubmitOrderDTO submitOrderDTO) {
         try {
-            this.orderRepository.deleteAll();
             Order order = this.orderRepository.save(OrderAdapter.map(submitOrderDTO));
             return OrderAdapter.fromEntity(order);
         } catch (DataIntegrityViolationException e) {
