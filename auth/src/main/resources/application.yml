@@ -6,16 +6,6 @@ project:
 spring:
   application:
     name: auth
-  datasource:
-    url: jdbc:postgresql://localhost:5432/eucomida-db
-    username: eucomida
-    password: eucomida
-    driver-class-name: org.postgresql.Driver
-  jpa:
-    hibernate:
-      ddl-auto: update
-    open-in-view: false
-    show-sql: true
 server:
   port: 8081
 
