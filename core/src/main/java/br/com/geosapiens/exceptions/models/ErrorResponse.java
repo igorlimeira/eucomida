@@ -10,8 +10,8 @@ import lombok.Setter;
 @Setter
 @Schema(description = "Details about the error")
 public class ErrorResponse {
-    @Schema(description = "Error code", example = "INVALID_ORDER")
+    @Schema(description = "Error code", example = "INTERNAL_ERROR")
     private String code;
-    @Schema(description = "Description of the error", example = "The order data is invalid.")
+    @Schema(description = "Description of the error", example = "An unexpected error occurred.")
     private String message;
 }
