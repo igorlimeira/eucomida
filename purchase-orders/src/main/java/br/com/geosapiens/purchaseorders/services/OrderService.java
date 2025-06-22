@@ -46,7 +46,7 @@ public class OrderService implements OrderServiceInterface {
             throw new OrderException(EOrderError.INVALID_ORDER);
         } catch (Exception e) {
             log.error("Error while retrieving order status: {}", e.getMessage(), e);
-            throw new OrderException(EOrderError.INTERNAL_ERROR);
+            throw e;
         }
     }
 }
