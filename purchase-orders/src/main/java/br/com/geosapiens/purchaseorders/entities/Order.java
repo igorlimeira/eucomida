@@ -17,6 +17,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @Builder
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Order {
 
     @Id
@@ -50,12 +51,15 @@ public class Order {
     private String notes;
 
     @Column(name = "total_amount", nullable = false, precision = 19, scale = 2)
-    private BigDecimal totalAmount;
+    @Builder.Default
+    private BigDecimal totalAmount = BigDecimal.ZERO;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
     private List<OrderItem> items = new ArrayList<>();
 
     public void addItem(OrderItem item) {
+        this.totalAmount = this.totalAmount.add(item.getTotalPrice());
         item.setOrder(this);
         this.items.add(item);
     }

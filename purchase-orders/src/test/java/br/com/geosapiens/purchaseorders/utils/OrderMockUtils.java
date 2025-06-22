@@ -23,8 +23,10 @@ public class OrderMockUtils {
                 .createdDate(LocalDateTime.now())
                 .shippingAddress(newMockedOrder.shippingAddress())
                 .notes(newMockedOrder.notes())
-                .totalAmount(newMockedOrder.totalAmount())
                 .items(mocknewOrderItems(newMockedOrder))
+                .totalAmount(newMockedOrder.items().stream()
+                        .map(item -> UtilBigDecimal.multiply(item.unitPrice(), item.quantity()))
+                        .reduce(BigDecimal.ZERO, BigDecimal::add))
                 .status(EOrderStatus.PENDING)
                 .build();
     }
@@ -50,19 +52,18 @@ public class OrderMockUtils {
                 UUID.randomUUID(), // restaurantId
                 "CREDIT_CARD", // paymentMethod
                 "123 Main St, City, Country", // shippingAddress
-                "Please deliver quickly", // notes
-                BigDecimal.valueOf(100.00), // totalAmount
+                "Please deliver quickly", // notes,
                 mockOrderItems() // items
         );
     }
 
-    private static List<OrderItemDTO> mockOrderItems() {
+    public static List<OrderItemDTO> mockOrderItems() {
         return List.of(
                 new OrderItemDTO(1L
                         , 12345L
                         , "Pizza Margherita"
                         , BigDecimal.TWO
                         , BigDecimal.valueOf(25.00)
-                        , BigDecimal.valueOf(50.00)));
+                        ));
     }
 }

@@ -24,7 +24,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDateTime;
-import java.util.Collections;
 import java.util.UUID;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -99,8 +98,7 @@ class OrderControllerTest {
                 "CREDIT_CARD",
                 "123 Main Street",
                 "no onions please",
-                null,
-                Collections.emptyList()
+                OrderMockUtils.mockOrderItems()
         );
 
         Mockito.when(orderService.submitOrder(any()))

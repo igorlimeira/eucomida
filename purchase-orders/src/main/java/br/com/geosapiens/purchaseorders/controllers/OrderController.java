@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -38,7 +39,7 @@ public class OrderController {
             @ApiResponse(responseCode = "500", description = "Unexpected server error",
                     content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
     })
-    public ResponseEntity<ResponseOrderDTO> submitOrder(@RequestBody SubmitOrderDTO submitOrderDTO) {
+    public ResponseEntity<ResponseOrderDTO> submitOrder(@RequestBody @Valid SubmitOrderDTO submitOrderDTO) {
         return ResponseEntity.ok(orderService.submitOrder(submitOrderDTO));
     }
 

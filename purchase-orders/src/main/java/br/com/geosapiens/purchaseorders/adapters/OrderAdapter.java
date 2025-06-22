@@ -16,7 +16,6 @@ public class OrderAdapter {
         order.setPaymentMethod(submitOrderDTO.paymentMethod());
         order.setShippingAddress(submitOrderDTO.shippingAddress());
         order.setNotes(submitOrderDTO.notes());
-        order.setTotalAmount(submitOrderDTO.totalAmount());
         submitOrderDTO.items().forEach(item -> order.addItem(OrderItemAdapter.map(item, order)));
 
         return order;

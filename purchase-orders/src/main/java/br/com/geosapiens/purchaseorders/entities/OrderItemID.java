@@ -12,6 +12,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @Builder
+@EqualsAndHashCode(callSuper = false)
 public class OrderItemID implements Serializable {
     @Column(name = "order_id")
     private Long orderId;
