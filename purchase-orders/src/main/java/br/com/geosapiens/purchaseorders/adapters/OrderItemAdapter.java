@@ -2,14 +2,16 @@ package br.com.geosapiens.purchaseorders.adapters;
 
 import br.com.geosapiens.purchaseorders.dtos.OrderItemDTO;
 import br.com.geosapiens.purchaseorders.dtos.ResponseOrderItemDTO;
+import br.com.geosapiens.purchaseorders.entities.Order;
 import br.com.geosapiens.purchaseorders.entities.OrderItem;
 import br.com.geosapiens.purchaseorders.entities.OrderItemID;
+import br.com.geosapiens.utils.UtilBigDecimal;
 
 import java.util.List;
 
 public class OrderItemAdapter {
 
-    static OrderItem map(OrderItemDTO item) {
+    static OrderItem map(OrderItemDTO item, Order order) {
         return OrderItem.builder()
                 .id(OrderItemID.builder()
                         .itemIdx(item.itemIndex())
@@ -18,7 +20,8 @@ public class OrderItemAdapter {
                 .name(item.productName())
                 .quantity(item.quantity())
                 .unitPrice(item.unitPrice())
-                .totalPrice(item.totalPrice())
+                .totalPrice(UtilBigDecimal.multiply(item.unitPrice(), item.quantity()))
+                .order(order)
                 .build();
     }
 

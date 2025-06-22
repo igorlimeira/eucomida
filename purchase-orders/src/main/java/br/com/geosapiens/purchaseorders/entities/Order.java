@@ -52,12 +52,17 @@ public class Order {
     @Column(name = "total_amount", nullable = false, precision = 19, scale = 2)
     private BigDecimal totalAmount;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItem> items = new ArrayList<>();
 
     public void addItem(OrderItem item) {
         item.setOrder(this);
-        items.add(item);
+        this.items.add(item);
+    }
+
+    @PrePersist
+    private void prePersist() {
+        this.createdDate = LocalDateTime.now();
     }
 
 }

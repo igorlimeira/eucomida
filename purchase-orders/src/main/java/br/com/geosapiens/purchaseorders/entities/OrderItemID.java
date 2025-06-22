@@ -2,20 +2,20 @@ package br.com.geosapiens.purchaseorders.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.io.Serializable;
 
 @Embeddable
-@Builder
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrderItemID {
-    @Column(name = "item_idx", nullable = false, precision = 19)
-    private Long itemIdx;
-
-    @Column(name = "order_id", nullable = false, precision = 19)
+@Getter
+@Setter
+@Builder
+public class OrderItemID implements Serializable {
+    @Column(name = "order_id")
     private Long orderId;
+
+    @Column(name = "item_idx")
+    private Long itemIdx;
 }

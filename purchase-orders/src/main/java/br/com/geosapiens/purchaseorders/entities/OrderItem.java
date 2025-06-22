@@ -32,9 +32,9 @@ public class OrderItem {
     @Column(name = "total_price", nullable = false, precision = 19, scale = 2)
     private BigDecimal totalPrice;
 
-    @JoinColumn(name = "order_id", referencedColumnName = "id")
+    @JoinColumn(name = "order_id", nullable = false)
     @ManyToOne(optional = false)
-    @MapsId("value = id.orderId")
+    @MapsId("orderId")
     private Order order;
 
 }
