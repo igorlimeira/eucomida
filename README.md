@@ -43,7 +43,6 @@ A API utiliza **JWT (JSON Web Token)**.
   - Usuário para realização de testes: `username: user_teste, password: teste123`.
 - **Token JWT**: Gerado com assinatura e tempo de expiração.
 - **Segurança**:
-    - Hash de senhas com BCrypt.
     - Rotas protegidas, futuramente por perfis de acesso (cliente, restaurante, entregador).
     - Token enviado no header: `Authorization: Bearer <token>`
 
