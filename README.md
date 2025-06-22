@@ -68,7 +68,7 @@ A API utiliza **JWT (JSON Web Token)**.
 
 ### Pré-requisitos
 
-- [Java 21](https://adoptium.net) e [Maven 3.9+](https://maven.apache.org/)
+- [Java 21](https://jdk.java.net/archive/) e [Maven 3.9+](https://maven.apache.org/)
 - [Docker](https://www.docker.com/) e [Docker Compose](https://docs.docker.com/compose/) instalados
 
 ### Passos
