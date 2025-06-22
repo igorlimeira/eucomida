@@ -9,7 +9,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>purchase-orders</artifactId>
-    <name>purchase-orders</name>
+    <name>GeoSapiens - PurchaseOrder API</name>
     <description>This package contains the purchase orders module for the application.</description>
     <url/>
     <licenses>
