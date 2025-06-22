@@ -1,13 +1,14 @@
 package br.com.geosapiens.purchaseorders.adapters;
 
 import br.com.geosapiens.purchaseorders.dtos.ResponseOrderDTO;
+import br.com.geosapiens.purchaseorders.dtos.ResponseOrderStatusDTO;
 import br.com.geosapiens.purchaseorders.dtos.SubmitOrderDTO;
 import br.com.geosapiens.purchaseorders.entities.Order;
 
 public class OrderAdapter {
 
     public static Order map(
-        SubmitOrderDTO submitOrderDTO
+            SubmitOrderDTO submitOrderDTO
     ) {
         Order order = new Order();
         order.setCustomerId(submitOrderDTO.customerId());
@@ -34,6 +35,13 @@ public class OrderAdapter {
                 .totalAmount(savedOrder.getTotalAmount())
                 .orderStatus(savedOrder.getStatus())
                 .items(OrderItemAdapter.map(savedOrder.getItems()))
+                .build();
+    }
+
+    public static ResponseOrderStatusDTO statusFromEntity(Order savedOrder) {
+        return ResponseOrderStatusDTO.builder()
+                .orderId(savedOrder.getId())
+                .orderStatus(savedOrder.getStatus())
                 .build();
     }
 }

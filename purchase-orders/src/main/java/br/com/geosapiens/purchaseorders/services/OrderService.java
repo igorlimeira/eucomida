@@ -2,6 +2,7 @@ package br.com.geosapiens.purchaseorders.services;
 
 import br.com.geosapiens.purchaseorders.adapters.OrderAdapter;
 import br.com.geosapiens.purchaseorders.dtos.ResponseOrderDTO;
+import br.com.geosapiens.purchaseorders.dtos.ResponseOrderStatusDTO;
 import br.com.geosapiens.purchaseorders.dtos.SubmitOrderDTO;
 import br.com.geosapiens.purchaseorders.entities.Order;
 import br.com.geosapiens.purchaseorders.enums.EOrderError;
@@ -36,8 +37,17 @@ public class OrderService implements OrderServiceInterface {
     }
 
     @Override
-    public ResponseOrderDTO getOrderById(Long orderId) {
-        //TODO: Implement the logic to retrieve an order by its ID
-        return null;
+    public ResponseOrderStatusDTO getOrderStatusById(Long orderId) {
+        try{
+            Order order = this.orderRepository.findById(orderId)
+                    .orElseThrow(() -> new OrderException(EOrderError.ORDER_NOT_FOUND));
+            return OrderAdapter.statusFromEntity(order);
+        } catch (DataIntegrityViolationException e) {
+            log.error("Data integrity violation while retrieving order status: ", e);
+            throw new OrderException(EOrderError.INVALID_ORDER);
+        } catch (Exception e) {
+            log.error("Error while retrieving order status: {}", e.getMessage(), e);
+            throw new OrderException(EOrderError.INTERNAL_ERROR);
+        }
     }
 }

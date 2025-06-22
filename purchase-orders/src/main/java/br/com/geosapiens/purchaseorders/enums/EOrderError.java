@@ -2,7 +2,8 @@ package br.com.geosapiens.purchaseorders.enums;
 
 public enum EOrderError {
     INVALID_ORDER("INVALID_ORDER", "The order data is invalid."),
-    INTERNAL_ERROR("INTERNAL_ERROR", "An unexpected error occurred.");
+    INTERNAL_ERROR("INTERNAL_ERROR", "An unexpected error occurred."),
+    ORDER_NOT_FOUND("ORDER_NOT_FOUND", "The order with the given ID was not found.");
 
     private final String code;
     private final String message;

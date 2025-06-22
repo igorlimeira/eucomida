@@ -1,6 +1,7 @@
 package br.com.geosapiens.purchaseorders.interfaces;
 
 import br.com.geosapiens.purchaseorders.dtos.ResponseOrderDTO;
+import br.com.geosapiens.purchaseorders.dtos.ResponseOrderStatusDTO;
 import br.com.geosapiens.purchaseorders.dtos.SubmitOrderDTO;
 
 public interface OrderServiceInterface {
@@ -13,10 +14,10 @@ public interface OrderServiceInterface {
     ResponseOrderDTO submitOrder(SubmitOrderDTO submitOrderDTO);
 
     /**
-     * Retrieves an order by its ID.
+     * Retrieves an order status by its ID.
      *
      * @param orderId the ID of the order to retrieve
      * @return the details of the requested order
      */
-    ResponseOrderDTO getOrderById(Long orderId);
+    ResponseOrderStatusDTO getOrderStatusById(Long orderId);
 }
