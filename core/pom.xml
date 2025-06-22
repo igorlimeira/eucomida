@@ -10,8 +10,8 @@
     </parent>
     <packaging>jar</packaging>
     <artifactId>core</artifactId>
-    <name>core</name>
-    <description>Core API for the eucomida application</description>
+    <name>euComida - Core</name>
+    <description>Core Lib for the euComida application</description>
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
