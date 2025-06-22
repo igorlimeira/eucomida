@@ -1,5 +1,6 @@
 package br.com.geosapiens.purchaseorders.controllers;
 
+import br.com.geosapiens.config.JwtAuthFilter;
 import br.com.geosapiens.exceptions.GlobalExceptionHandler;
 import br.com.geosapiens.purchaseorders.dtos.ResponseOrderDTO;
 import br.com.geosapiens.purchaseorders.dtos.SubmitOrderDTO;
@@ -8,11 +9,13 @@ import br.com.geosapiens.purchaseorders.enums.EOrderStatus;
 import br.com.geosapiens.purchaseorders.exceptions.OrderException;
 import br.com.geosapiens.purchaseorders.interfaces.OrderServiceInterface;
 import br.com.geosapiens.purchaseorders.utils.OrderMockUtils;
+import br.com.geosapiens.utils.JwtUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
@@ -29,6 +32,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(OrderController.class)
+@AutoConfigureMockMvc(addFilters = false)
 @Import({GlobalExceptionHandler.class, OrderControllerTest.MockBeans.class})
 class OrderControllerTest {
 
@@ -51,6 +55,16 @@ class OrderControllerTest {
         @Bean
         public OrderServiceInterface orderService() {
             return Mockito.mock(OrderServiceInterface.class);
+        }
+
+        @Bean
+        public JwtUtils jwtUtils() {
+            return Mockito.mock(JwtUtils.class);
+        }
+
+        @Bean
+        public JwtAuthFilter jwtAuthFilter() {
+            return Mockito.mock(JwtAuthFilter.class);
         }
     }
 
