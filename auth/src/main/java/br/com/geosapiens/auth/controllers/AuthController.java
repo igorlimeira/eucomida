@@ -3,6 +3,7 @@ package br.com.geosapiens.auth.controllers;
 import br.com.geosapiens.auth.interfaces.AuthServiceInterface;
 import br.com.geosapiens.auth.models.AuthRequest;
 import br.com.geosapiens.auth.models.AuthResponse;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +19,7 @@ public class AuthController {
     private AuthServiceInterface authService;
 
     @PostMapping("/login")
-    public ResponseEntity<AuthResponse> login(@RequestBody AuthRequest request) {
+    public ResponseEntity<AuthResponse> login(@RequestBody @Valid AuthRequest request) {
         return ResponseEntity.ok(this.authService.auth(request));
     }
 }
