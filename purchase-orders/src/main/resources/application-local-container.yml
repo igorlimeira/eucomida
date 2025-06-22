@@ -1,0 +1,28 @@
+project:
+  title: @project.name@
+  description: @project.description@
+  version: @project.version@
+
+spring:
+  application:
+    name: purchase-orders
+  datasource:
+    url: jdbc:postgresql://db-postgres:5432/eucomida-db
+    username: eucomida
+    password: eucomida
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    show-sql: true
+server:
+  port: 8080
+
+eucomida:
+  config:
+    security:
+      issuer: euComida
+      jwt:
+        secret: ${JWT_SECRET:super-secret-key-that-should-be-in-key-vault}
+        expiration: 86400000

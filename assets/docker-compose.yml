@@ -11,9 +11,34 @@ services:
       - postgres_data:/var/lib/postgresql/data
     networks:
       - network1
+
+  orders-service:
+    image: eucomida-purchase-orders:latest
+    environment:
+      JWT_SECRET: super-secret-key-that-should-be-in-key-vault
+      ACTIVE_PROFILE: local-container
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db-postgres
+    networks:
+      - network1
+
+  auth-service:
+    image: eucomida-auth:latest
+    environment:
+      JWT_SECRET: super-secret-key-that-should-be-in-key-vault
+      ACTIVE_PROFILE: local-container
+    ports:
+      - "8081:8081"
+    depends_on:
+      - db-postgres
+    networks:
+      - network1
 volumes:
   postgres_data:
 networks:
   network1:
     name: bridge-network
     driver: bridge
+    external: true

@@ -1,0 +1,18 @@
+project:
+  title: @project.name@
+  description: @project.description@
+  version: @project.version@
+
+spring:
+  application:
+    name: auth
+server:
+  port: 8081
+
+eucomida:
+  config:
+    security:
+      issuer: euComida
+      jwt:
+        secret: ${JWT_SECRET:super-secret-key-that-should-be-in-key-vault}
+        expiration: 86400000
