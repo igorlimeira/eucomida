@@ -9,6 +9,7 @@ import br.com.geosapiens.purchaseorders.exceptions.OrderException;
 import br.com.geosapiens.purchaseorders.interfaces.OrderServiceInterface;
 import br.com.geosapiens.purchaseorders.utils.OrderMockUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,11 @@ class OrderControllerTest {
 
     @Autowired
     private OrderServiceInterface orderService;
+
+    @BeforeEach
+    void setup() {
+        Mockito.reset(orderService);
+    }
 
     @TestConfiguration
     static class MockBeans {
