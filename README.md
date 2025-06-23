@@ -92,11 +92,8 @@ A API utiliza **JWT (JSON Web Token)**.
     assets\docker-build-and-run.bat
     ```
 3. Após o `docker-compose` subir os serviços, as APIs ficarão acessíveis em:
-    - http://localhost:8080 para o serviço de Pedidos
-    - http://localhost:8081 para o serviço de Autenticação
-4. A documentação OpenAPI (Swagger) pode ser acessada em 
-   - PurchaseOrders: `http://localhost:8080/swagger-ui/index.html#`
-   - Auth: `http://localhost:8081/swagger-ui/index.html#`.
+    - [Swagger - Serviço Pedidos](http://localhost:8080/swagger-ui/index.html#)
+    - [Swagger - Serviço Autenticação](http://localhost:8081/swagger-ui/index.html#)
 
 Caso prefira rodar localmente sem Docker, utilize o Maven:
 ```bash
