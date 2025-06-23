@@ -80,6 +80,10 @@ A API utiliza **JWT (JSON Web Token)**.
    ```
 2. Construa as imagens Docker e inicie os containers (PostgreSQL, Auth e Purchase Orders):
     - No Linux ou MacOS, execute:
+    ```bash 
+   chmod +x ./assets/docker-build-and-run.sh
+    ```
+   
    ```bash
    ./assets/docker-build-and-run.sh
    ```

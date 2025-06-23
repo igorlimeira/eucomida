@@ -5,7 +5,7 @@ SET SCRIPT_DIR=%~dp0
 cd /d %SCRIPT_DIR%\..
 
 REM Check if the network exists
-FOR /F "tokens=*" %%i IN ('docker network ls --filter name=^network1$ --format "{{.Name}}"') DO (
+FOR /F "tokens=*" %%i IN ('docker network ls --filter "name=network1" --format "{{.Name}}"') DO (
     IF /I "%%i"=="network1" (
         echo Docker network "network1" already exists.
         GOTO BuildImages

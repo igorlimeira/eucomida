@@ -41,4 +41,3 @@ networks:
   network1:
     name: bridge-network
     driver: bridge
-    external: true
