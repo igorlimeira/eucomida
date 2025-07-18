@@ -1,0 +1,21 @@
+name: Review PR with GPT
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run ReviewGPT
+        uses: review-gpt/review-gpt-action@v1.0.5
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          openai-key: ${{ secrets.OPENAI_API_KEY }}
+          language: pt-BR
+          model: gpt-4
+          files: '**/*.ts,**/*.tsx,**/*.js,**/*.java'
